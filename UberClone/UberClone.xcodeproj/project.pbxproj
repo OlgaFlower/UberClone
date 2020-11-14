@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		841B5CFF25605844002304AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5CFE25605844002304AD /* AppDelegate.swift */; };
 		841B5D0125605844002304AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5D0025605844002304AD /* SceneDelegate.swift */; };
-		841B5D0325605844002304AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5D0225605844002304AD /* ViewController.swift */; };
 		841B5D0625605844002304AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841B5D0425605844002304AD /* Main.storyboard */; };
 		841B5D0825605847002304AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841B5D0725605847002304AD /* Assets.xcassets */; };
 		841B5D0B25605847002304AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841B5D0925605847002304AD /* LaunchScreen.storyboard */; };
 		841B5D1625605847002304AD /* UberCloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5D1525605847002304AD /* UberCloneTests.swift */; };
 		841B5D2125605847002304AD /* UberCloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5D2025605847002304AD /* UberCloneUITests.swift */; };
+		841B5D3D25605A5C002304AD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5D3C25605A5C002304AD /* LoginController.swift */; };
+		841B5D5425606F6F002304AD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5D5325606F6F002304AD /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,6 @@
 		841B5CFB25605844002304AD /* UberClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841B5CFE25605844002304AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		841B5D0025605844002304AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		841B5D0225605844002304AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		841B5D0525605844002304AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		841B5D0725605847002304AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		841B5D0A25605847002304AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +49,8 @@
 		841B5D1C25605847002304AD /* UberCloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UberCloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		841B5D2025605847002304AD /* UberCloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberCloneUITests.swift; sourceTree = "<group>"; };
 		841B5D2225605847002304AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		841B5D3C25605A5C002304AD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		841B5D5325606F6F002304AD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +103,11 @@
 			children = (
 				841B5CFE25605844002304AD /* AppDelegate.swift */,
 				841B5D0025605844002304AD /* SceneDelegate.swift */,
-				841B5D0225605844002304AD /* ViewController.swift */,
+				841B5D35256058B0002304AD /* Model */,
+				841B5D34256058AE002304AD /* View */,
+				841B5D33256058AA002304AD /* Controller */,
+				841B5D32256058A8002304AD /* Service */,
+				841B5D31256058A3002304AD /* Utils */,
 				841B5D0425605844002304AD /* Main.storyboard */,
 				841B5D0725605847002304AD /* Assets.xcassets */,
 				841B5D0925605847002304AD /* LaunchScreen.storyboard */,
@@ -126,6 +132,43 @@
 				841B5D2225605847002304AD /* Info.plist */,
 			);
 			path = UberCloneUITests;
+			sourceTree = "<group>";
+		};
+		841B5D31256058A3002304AD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				841B5D5325606F6F002304AD /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		841B5D32256058A8002304AD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		841B5D33256058AA002304AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				841B5D3C25605A5C002304AD /* LoginController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		841B5D34256058AE002304AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		841B5D35256058B0002304AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +301,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				841B5D0325605844002304AD /* ViewController.swift in Sources */,
 				841B5CFF25605844002304AD /* AppDelegate.swift in Sources */,
+				841B5D3D25605A5C002304AD /* LoginController.swift in Sources */,
 				841B5D0125605844002304AD /* SceneDelegate.swift in Sources */,
+				841B5D5425606F6F002304AD /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +483,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6YJ62Z4KFL;
 				INFOPLIST_FILE = UberClone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,6 +503,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6YJ62Z4KFL;
 				INFOPLIST_FILE = UberClone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
