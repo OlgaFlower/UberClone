@@ -10,6 +10,7 @@ import UIKit
 class LoginController: UIViewController {
 
     // MARK: - Properties
+    
     //Title
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -20,14 +21,9 @@ class LoginController: UIViewController {
         return label
     }()
     
+    //Email
     private lazy var emailContainerView: UIView = {
         let view =  UIView().inputContainerView(image: #imageLiteral(resourceName: "ic_mail_outline_white_2x"), textField: emailTextField)
-        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        return view
-    }()
-    
-    private lazy var passwordContainerView: UIView = {
-        let view =  UIView().inputContainerView(image: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: passwordTextField)
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return view
     }()
@@ -37,22 +33,27 @@ class LoginController: UIViewController {
                                        isSecureTextEntry: false)
     }()
     
+    //Password
+    private lazy var passwordContainerView: UIView = {
+        let view =  UIView().inputContainerView(image: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: passwordTextField)
+        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        return view
+    }()
+    
     private let passwordTextField: UITextField = {
         return UITextField().textField(withPlaceholder: "Password",
                                        isSecureTextEntry: true)
     }()
     
-    private let loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Log in", for: .normal)
-        button.setTitleColor(UIColor(white: 1, alpha: 0.5), for: .normal)
-        button.backgroundColor = .mainBlueTint
-        button.layer.cornerRadius = 5
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    //Login button
+    private let loginButton: AuthButton = {
+        let button = AuthButton(type: .system)
+        button.setTitle("Log In", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         return button
     }()
     
+    //Don't have account button
     private let dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         
@@ -69,32 +70,39 @@ class LoginController: UIViewController {
     }()
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setUI()
+        configureUI()
     }
 
     // MARK: - Methods
+    
     //Make status bar white
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    func setUI() {
+    func configureUI() {
+        configureNavigationBar()
         view.backgroundColor = .backgroundColor
-        setTitleLabel()
-        setStackView()
+        setupTitleLabel()
+        setupStackView()
         setSignUpButton()
     }
     
-    func setTitleLabel() {
+    func configureNavigationBar() {
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
+    }
+    
+    func setupTitleLabel() {
         view.addSubview(titleLabel)
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 50)
         titleLabel.centerX(inView: view)
     }
     
-    func setStackView() {
+    func setupStackView() {
         let stack = UIStackView(arrangedSubviews: [emailContainerView,
                                                    passwordContainerView,
                                                    loginButton])
@@ -116,6 +124,8 @@ class LoginController: UIViewController {
     //MARK: - Actions
     
     @objc func showSignUp() {
-        
+        let controller = SignUpController()
+        navigationController?.pushViewController(controller, animated: true)
     }
+    
 }
