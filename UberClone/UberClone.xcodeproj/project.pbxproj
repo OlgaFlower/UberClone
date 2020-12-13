@@ -108,9 +108,7 @@
 				841B5CFE25605844002304AD /* AppDelegate.swift */,
 				841B5D0025605844002304AD /* SceneDelegate.swift */,
 				8472765D25866F54001A2638 /* Moduls */,
-				841B5D35256058B0002304AD /* Model */,
 				841B5D34256058AE002304AD /* View */,
-				841B5D32256058A8002304AD /* Service */,
 				841B5D31256058A3002304AD /* Utils */,
 				841B5D0725605847002304AD /* Assets.xcassets */,
 				841B5D0925605847002304AD /* LaunchScreen.storyboard */,
@@ -146,26 +144,12 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		841B5D32256058A8002304AD /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		841B5D34256058AE002304AD /* View */ = {
 			isa = PBXGroup;
 			children = (
 				8472765025866E73001A2638 /* AuthButton.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		841B5D35256058B0002304AD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		8472765D25866F54001A2638 /* Moduls */ = {
