@@ -62,6 +62,8 @@ class LoginController: UIViewController {
                                                   attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16),
                                                                NSAttributedString.Key.foregroundColor: UIColor.mainBlueTint]))
         
+        button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
+        
         button.setAttributedTitle(attributedTitle, for: .normal)
         return button
     }()
@@ -109,5 +111,11 @@ class LoginController: UIViewController {
         view.addSubview(dontHaveAccountButton)
         dontHaveAccountButton.centerX(inView: view)
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, height: 32)
+    }
+    
+    //MARK: - Actions
+    
+    @objc func showSignUp() {
+        
     }
 }
