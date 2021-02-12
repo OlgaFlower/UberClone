@@ -75,6 +75,7 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureUI()
     }
 
@@ -86,6 +87,7 @@ class LoginController: UIViewController {
     }
     
     func configureUI() {
+        
         configureNavigationBar()
         view.backgroundColor = .backgroundColor
         setupTitleLabel()
@@ -94,17 +96,20 @@ class LoginController: UIViewController {
     }
     
     func configureNavigationBar() {
+        
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
     }
     
     func setupTitleLabel() {
+        
         view.addSubview(titleLabel)
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 50)
         titleLabel.centerX(inView: view)
     }
     
     func setupStackView() {
+        
         let stack = UIStackView(arrangedSubviews: [emailContainerView,
                                                    passwordContainerView,
                                                    loginButton])
@@ -118,6 +123,7 @@ class LoginController: UIViewController {
     }
     
     func setSignUpButton() {
+        
         view.addSubview(dontHaveAccountButton)
         dontHaveAccountButton.centerX(inView: view)
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, height: 32)
@@ -126,11 +132,13 @@ class LoginController: UIViewController {
     //MARK: - Selectors
     
     @objc func showSignUp() {
+        
         let controller = SignUpController()
         navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func handleLogin() {
+        
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
@@ -144,16 +152,6 @@ class LoginController: UIViewController {
             guard let controller = window?.rootViewController as? HomeController else { return }
             controller.configureUI()
             self.dismiss(animated: true, completion: nil)
-        }
-    }
-}
-
-extension UIWindow {
-    static var key: UIWindow? {
-        if #available(iOS 13, *) {
-            return UIApplication.shared.windows.first { $0.isKeyWindow }
-        } else {
-            return UIApplication.shared.keyWindow
         }
     }
 }
