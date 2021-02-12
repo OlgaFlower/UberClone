@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpController: UIViewController {
     //MARK: - Properties
@@ -76,6 +77,7 @@ class SignUpController: UIViewController {
         let button = AuthButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -89,7 +91,7 @@ class SignUpController: UIViewController {
                                                   attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16),
                                                                NSAttributedString.Key.foregroundColor: UIColor.mainBlueTint]))
         
-        button.addTarget(self, action: #selector(login), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         
         button.setAttributedTitle(attributedTitle, for: .normal)
         return button
@@ -137,7 +139,31 @@ class SignUpController: UIViewController {
     
     //MARK: - Actions
     
-    @objc func login() {
+    @objc func handleLogin() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func handleSignUp() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullname = fullNameTextField.text else { return }
+        let accountTypeIndex = accountTypeSegmentedControl.selectedSegmentIndex
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("Faild register user with error: \(error)")
+                return
+            }
+            
+            guard let uid = result?.user.uid else { return }
+            
+            let values = ["email" : email,
+                          "fullname" : fullname,
+                          "accountType" : accountTypeIndex] as [String : Any]
+            
+            Database.database().reference().child("users").child("uid").updateChildValues(values, withCompletionBlock: { (error, reference) in
+                print("Successfully")
+            })
+        }
     }
 }

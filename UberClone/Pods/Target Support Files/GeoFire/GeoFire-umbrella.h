@@ -14,12 +14,10 @@
 #import "GFCircleQuery.h"
 #import "GFQuery.h"
 #import "GFRegionQuery.h"
-#import "GFUtils.h"
 #import "GeoFire+Private.h"
 #import "GFBase32Utils.h"
 #import "GFGeoHash.h"
 #import "GFGeoHashQuery.h"
-#import "GFGeoQueryBounds.h"
 #import "GFQuery+Private.h"
 
 FOUNDATION_EXPORT double GeoFireVersionNumber;
