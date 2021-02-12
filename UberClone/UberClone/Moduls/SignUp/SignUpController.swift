@@ -137,7 +137,7 @@ class SignUpController: UIViewController {
         alreadyAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, height: 32)
     }
     
-    //MARK: - Actions
+    //MARK: - Selectors
     
     @objc func handleLogin() {
         navigationController?.popViewController(animated: true)
@@ -151,7 +151,7 @@ class SignUpController: UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                print("Faild register user with error: \(error)")
+                print("DEBUG: Faild register user with error. \(error.localizedDescription)")
                 return
             }
             
@@ -162,7 +162,11 @@ class SignUpController: UIViewController {
                           "accountType" : accountTypeIndex] as [String : Any]
             
             Database.database().reference().child("users").child("uid").updateChildValues(values, withCompletionBlock: { (error, reference) in
-                print("Successfully")
+                
+                let window = UIApplication.shared.windows.first
+                guard let controller = window?.rootViewController as? HomeController else { return }
+                controller.configureUI()
+                self.dismiss(animated: true, completion: nil)
             })
         }
     }

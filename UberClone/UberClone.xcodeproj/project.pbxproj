@@ -18,6 +18,7 @@
 		841B5D2125605847002304AD /* UberCloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5D2025605847002304AD /* UberCloneUITests.swift */; };
 		841B5D5425606F6F002304AD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5D5325606F6F002304AD /* Extensions.swift */; };
 		84468B5D25D57FC500311765 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84468B5C25D57FC500311765 /* GoogleService-Info.plist */; };
+		84468BB825D66E8000311765 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84468BB725D66E8000311765 /* HomeController.swift */; };
 		8472764725866DCE001A2638 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472764625866DCE001A2638 /* LoginController.swift */; };
 		8472764C25866E2B001A2638 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472764B25866E2B001A2638 /* SignUpController.swift */; };
 		8472765125866E73001A2638 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472765025866E73001A2638 /* AuthButton.swift */; };
@@ -73,6 +74,7 @@
 		841B5D2225605847002304AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		841B5D5325606F6F002304AD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		84468B5C25D57FC500311765 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84468BB725D66E8000311765 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		8472764625866DCE001A2638 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = UberClone/Moduls/LogIn/LoginController.swift; sourceTree = SOURCE_ROOT; };
 		8472764B25866E2B001A2638 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		8472765025866E73001A2638 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
@@ -195,9 +197,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		84468BB625D66E6200311765 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				84468BB725D66E8000311765 /* HomeController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		8472765D25866F54001A2638 /* Moduls */ = {
 			isa = PBXGroup;
 			children = (
+				84468BB625D66E6200311765 /* Home */,
 				8472765E25866F91001A2638 /* LogIn */,
 				8472765F25866F9A001A2638 /* SignUp */,
 			);
@@ -475,6 +486,7 @@
 			files = (
 				8472764C25866E2B001A2638 /* SignUpController.swift in Sources */,
 				8472765125866E73001A2638 /* AuthButton.swift in Sources */,
+				84468BB825D66E8000311765 /* HomeController.swift in Sources */,
 				841B5CFF25605844002304AD /* AppDelegate.swift in Sources */,
 				841B5D0125605844002304AD /* SceneDelegate.swift in Sources */,
 				841B5D5425606F6F002304AD /* Extensions.swift in Sources */,
