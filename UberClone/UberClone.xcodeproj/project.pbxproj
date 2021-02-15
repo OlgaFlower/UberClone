@@ -10,8 +10,10 @@
 		55D891CF595AEDBCB020E648 /* Pods_UberCloneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC801FA5C5647E98F65D55FE /* Pods_UberCloneTests.framework */; };
 		66E9631E77950C5B86BF33D7 /* Pods_UberClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5488022530F888F82224A3 /* Pods_UberClone.framework */; };
 		68C6C85927FE24B4A51F19AF /* Pods_UberClone_UberCloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF020C0ECC6FAD781D38AE7 /* Pods_UberClone_UberCloneUITests.framework */; };
-		841AF27125DA6C7100C68767 /* LocationInputActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841AF27025DA6C7100C68767 /* LocationInputActivationView.swift */; };
-		841AF27525DA87CD00C68767 /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841AF27425DA87CD00C68767 /* LocationInputView.swift */; };
+		841AF2E125DAB8F300C68767 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841AF2E025DAB8F300C68767 /* AuthButton.swift */; };
+		841AF2E925DAB90700C68767 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841AF2E625DAB90700C68767 /* LocationCell.swift */; };
+		841AF2EA25DAB90700C68767 /* LocationInputActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841AF2E725DAB90700C68767 /* LocationInputActivationView.swift */; };
+		841AF2EB25DAB90700C68767 /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841AF2E825DAB90700C68767 /* LocationInputView.swift */; };
 		841B5CFF25605844002304AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5CFE25605844002304AD /* AppDelegate.swift */; };
 		841B5D0125605844002304AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5D0025605844002304AD /* SceneDelegate.swift */; };
 		841B5D0825605847002304AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841B5D0725605847002304AD /* Assets.xcassets */; };
@@ -23,7 +25,6 @@
 		84468BB825D66E8000311765 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84468BB725D66E8000311765 /* HomeController.swift */; };
 		8472764725866DCE001A2638 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472764625866DCE001A2638 /* LoginController.swift */; };
 		8472764C25866E2B001A2638 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472764B25866E2B001A2638 /* SignUpController.swift */; };
-		8472765125866E73001A2638 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472765025866E73001A2638 /* AuthButton.swift */; };
 		8472765925866EBD001A2638 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8472765825866EBD001A2638 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -62,8 +63,10 @@
 		4DF020C0ECC6FAD781D38AE7 /* Pods_UberClone_UberCloneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UberClone_UberCloneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		774EDAF23E28EEE56FFA5DFC /* Pods-UberCloneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberCloneTests.release.xcconfig"; path = "Target Support Files/Pods-UberCloneTests/Pods-UberCloneTests.release.xcconfig"; sourceTree = "<group>"; };
 		7F1FB97C85795A33B4D28B98 /* Pods-UberClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberClone.debug.xcconfig"; path = "Target Support Files/Pods-UberClone/Pods-UberClone.debug.xcconfig"; sourceTree = "<group>"; };
-		841AF27025DA6C7100C68767 /* LocationInputActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputActivationView.swift; sourceTree = "<group>"; };
-		841AF27425DA87CD00C68767 /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
+		841AF2E025DAB8F300C68767 /* AuthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthButton.swift; path = UberClone/Views/AuthButton.swift; sourceTree = SOURCE_ROOT; };
+		841AF2E625DAB90700C68767 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		841AF2E725DAB90700C68767 /* LocationInputActivationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInputActivationView.swift; sourceTree = "<group>"; };
+		841AF2E825DAB90700C68767 /* LocationInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
 		841B5CFB25605844002304AD /* UberClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841B5CFE25605844002304AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		841B5D0025605844002304AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +84,6 @@
 		84468BB725D66E8000311765 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		8472764625866DCE001A2638 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = UberClone/Moduls/LogIn/LoginController.swift; sourceTree = SOURCE_ROOT; };
 		8472764B25866E2B001A2638 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
-		8472765025866E73001A2638 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		8472765825866EBD001A2638 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B0C321726653DD759C8B2B28 /* Pods-UberClone-UberCloneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberClone-UberCloneUITests.debug.xcconfig"; path = "Target Support Files/Pods-UberClone-UberCloneUITests/Pods-UberClone-UberCloneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD5488022530F888F82224A3 /* Pods_UberClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UberClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +158,7 @@
 				841B5CFE25605844002304AD /* AppDelegate.swift */,
 				841B5D0025605844002304AD /* SceneDelegate.swift */,
 				8472765D25866F54001A2638 /* Moduls */,
-				841B5D34256058AE002304AD /* View */,
+				841B5D34256058AE002304AD /* Views */,
 				841B5D31256058A3002304AD /* Utils */,
 				841B5D0725605847002304AD /* Assets.xcassets */,
 				841B5D0925605847002304AD /* LaunchScreen.storyboard */,
@@ -193,14 +195,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		841B5D34256058AE002304AD /* View */ = {
+		841B5D34256058AE002304AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8472765025866E73001A2638 /* AuthButton.swift */,
-				841AF27025DA6C7100C68767 /* LocationInputActivationView.swift */,
-				841AF27425DA87CD00C68767 /* LocationInputView.swift */,
+				841AF2E625DAB90700C68767 /* LocationCell.swift */,
+				841AF2E725DAB90700C68767 /* LocationInputActivationView.swift */,
+				841AF2E825DAB90700C68767 /* LocationInputView.swift */,
+				841AF2E025DAB8F300C68767 /* AuthButton.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		84468BB625D66E6200311765 /* Home */ = {
@@ -491,13 +494,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8472764C25866E2B001A2638 /* SignUpController.swift in Sources */,
-				8472765125866E73001A2638 /* AuthButton.swift in Sources */,
+				841AF2E125DAB8F300C68767 /* AuthButton.swift in Sources */,
 				84468BB825D66E8000311765 /* HomeController.swift in Sources */,
-				841AF27525DA87CD00C68767 /* LocationInputView.swift in Sources */,
 				841B5CFF25605844002304AD /* AppDelegate.swift in Sources */,
+				841AF2EB25DAB90700C68767 /* LocationInputView.swift in Sources */,
+				841AF2EA25DAB90700C68767 /* LocationInputActivationView.swift in Sources */,
 				841B5D0125605844002304AD /* SceneDelegate.swift in Sources */,
 				841B5D5425606F6F002304AD /* Extensions.swift in Sources */,
-				841AF27125DA6C7100C68767 /* LocationInputActivationView.swift in Sources */,
+				841AF2E925DAB90700C68767 /* LocationCell.swift in Sources */,
 				8472764725866DCE001A2638 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
