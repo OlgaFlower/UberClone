@@ -161,7 +161,7 @@ class SignUpController: UIViewController {
                           "fullname" : fullname,
                           "accountType" : accountTypeIndex] as [String : Any]
             
-            Database.database().reference().child("users").child("uid").updateChildValues(values, withCompletionBlock: { (error, reference) in
+            Database.database().reference().child("users").child(uid).updateChildValues(values, withCompletionBlock: { (error, reference) in
                 
                 let window = UIApplication.shared.windows.first
                 guard let controller = window?.rootViewController as? HomeController else { return }

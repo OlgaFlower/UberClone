@@ -3,34 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>702511961164-vqhe6km67o3hqaltjfvrlguuj73ufjl0.apps.googleusercontent.com</string>
+	<string>931291726450-n11a9j2k1flvh4mna9qqap11i923piu4.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.702511961164-vqhe6km67o3hqaltjfvrlguuj73ufjl0</string>
+	<string>com.googleusercontent.apps.931291726450-n11a9j2k1flvh4mna9qqap11i923piu4</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBU-SW6XitySMxsaZWqMZQeHroEsq9jmPA</string>
+	<string>AIzaSyDhahp2BbRP2Vm-VMC8zDlfzqpt3J3lltg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>702511961164</string>
+	<string>931291726450</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>OlgaFlower.UberClone</string>
 	<key>PROJECT_ID</key>
-	<string>uberclone-bccf4</string>
+	<string>uberclone-92302</string>
 	<key>STORAGE_BUCKET</key>
-	<string>uberclone-bccf4.appspot.com</string>
+	<string>uberclone-92302.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:702511961164:ios:13a5ff0cef36b9d74a50e9</string>
-	<key>DATABASE_URL</key>
-	<string>https://uberclone-bccf4-default-rtdb.firebaseio.com</string>
+	<string>1:931291726450:ios:1c16dd84ea4976e0a3f8eb</string>
 </dict>
 </plist>
