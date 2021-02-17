@@ -16,6 +16,12 @@ class LocationInputView: UIView {
     // MARK: - Properties
     weak var delegate: LocationInputViewDelegate?
     
+    var user: User? {
+        didSet {
+            titleLabel.text = user?.fullname
+        }
+    }
+    
     //Back button
     private let backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -27,7 +33,6 @@ class LocationInputView: UIView {
     //Title
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Stephan Dowless"
         label.textColor = .darkGray
         label.font = UIFont.systemFont(ofSize: 16)
         return label
