@@ -15,7 +15,7 @@ class HomeController: UIViewController {
     
     // MARK: - Properties
     private let mapView = MKMapView()
-    private let locationManager = CLLocationManager()
+    private let locationManager = LocationHandler.shared.locationManager
     private let inputActivationView = LocationInputActivationView()
     private let locationInputView = LocationInputView()
     private let tableView = UITableView()
@@ -33,7 +33,7 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkIfUserLoggedIn()
+        checkIfUserIsLoggedIn()
         enableLocationServices()
         fetchUserData()
 //        signOut()
@@ -47,7 +47,7 @@ class HomeController: UIViewController {
         }
     }
     
-    func checkIfUserLoggedIn() {
+    func checkIfUserIsLoggedIn() {
         
         if Auth.auth().currentUser?.uid == nil {
             DispatchQueue.main.async {
@@ -64,6 +64,11 @@ class HomeController: UIViewController {
         
         do {
             try Auth.auth().signOut()
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: LoginController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
         } catch {
             print("DEBUG: Error singing out...")
         }
@@ -129,39 +134,28 @@ class HomeController: UIViewController {
 }
 
 // MARK: - Location Services
-extension HomeController: CLLocationManagerDelegate {
+extension HomeController {
    
     //Enable Location Services
     func enableLocationServices() {
-        
-        //allow us to determine if location status is changed
-        locationManager.delegate = self
-        
         
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             print("DEBUG: Not determined...")
             //ask to allow access location once or when user is using the app
-            locationManager.requestWhenInUseAuthorization() //display message
+            locationManager?.requestWhenInUseAuthorization() //display message
         case .restricted, .denied:
             break
         case .authorizedAlways:
             print("DEBUG: Auth always...")
-            locationManager.startUpdatingLocation()
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager?.startUpdatingLocation()
+            locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         case .authorizedWhenInUse:
             print("DEBUG: Auth when in use...")
             //ask to allow access location always (even if user doesn't use the app)
-            locationManager.requestAlwaysAuthorization()
+            locationManager?.requestAlwaysAuthorization()
         @unknown default:
             break
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
-        if status == .authorizedWhenInUse {
-            locationManager.requestAlwaysAuthorization()
         }
     }
 }

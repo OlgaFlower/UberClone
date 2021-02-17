@@ -7,9 +7,12 @@
 
 import UIKit
 import Firebase
+import GeoFire
 
 class SignUpController: UIViewController {
     //MARK: - Properties
+    
+    private var location = LocationHandler.shared.locationManager.location
     
     //Title
     private let titleLabel: UILabel = {
@@ -102,6 +105,8 @@ class SignUpController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
+        print("---- location = \(location)")
     }
     
     //MARK: - Functions
@@ -137,6 +142,19 @@ class SignUpController: UIViewController {
         alreadyAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, height: 32)
     }
     
+    //MARK: - Helper Functions
+    
+    func uploadUserAndShowHomeController(uid: String, values: [String : Any]) {
+        
+        REF_USERS.child("users").child(uid).updateChildValues(values, withCompletionBlock: { (error, reference) in
+            
+            let window = UIApplication.shared.windows.first
+            guard let controller = window?.rootViewController as? HomeController else { return }
+            controller.configureUI()
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
+    
     //MARK: - Selectors
     
     @objc func handleLogin() {
@@ -156,18 +174,23 @@ class SignUpController: UIViewController {
             }
             
             guard let uid = result?.user.uid else { return }
-            
             let values = ["email" : email,
                           "fullname" : fullname,
                           "accountType" : accountTypeIndex] as [String : Any]
             
-            Database.database().reference().child("users").child(uid).updateChildValues(values, withCompletionBlock: { (error, reference) in
+            if accountTypeIndex == 1 {
+                // MARK: Driver
                 
-                let window = UIApplication.shared.windows.first
-                guard let controller = window?.rootViewController as? HomeController else { return }
-                controller.configureUI()
-                self.dismiss(animated: true, completion: nil)
-            })
+                //driver location reference
+                let geofire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
+                guard let location = self.location else { return }
+                
+                geofire.setLocation(location, forKey: uid, withCompletionBlock: { error in
+                    self.uploadUserAndShowHomeController(uid: uid, values: values)
+                })
+            }
+            
+            self.uploadUserAndShowHomeController(uid: uid, values: values)
         }
     }
 }

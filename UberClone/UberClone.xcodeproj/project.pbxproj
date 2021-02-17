@@ -24,6 +24,7 @@
 		842522AD25DBACEF0005334E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842522AC25DBACEF0005334E /* Service.swift */; };
 		842522B525DC103D0005334E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 842522B425DC103D0005334E /* GoogleService-Info.plist */; };
 		842522E625DD11840005334E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842522E525DD11840005334E /* User.swift */; };
+		8430445D25DD1DD900F0D3D8 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430445C25DD1DD900F0D3D8 /* LocationHandler.swift */; };
 		84468BB825D66E8000311765 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84468BB725D66E8000311765 /* HomeController.swift */; };
 		8472764725866DCE001A2638 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472764625866DCE001A2638 /* LoginController.swift */; };
 		8472764C25866E2B001A2638 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472764B25866E2B001A2638 /* SignUpController.swift */; };
@@ -85,6 +86,7 @@
 		842522AC25DBACEF0005334E /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		842522B425DC103D0005334E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		842522E525DD11840005334E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8430445C25DD1DD900F0D3D8 /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
 		84468BB725D66E8000311765 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		8472764625866DCE001A2638 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = UberClone/Moduls/LogIn/LoginController.swift; sourceTree = SOURCE_ROOT; };
 		8472764B25866E2B001A2638 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				841B5D5325606F6F002304AD /* Extensions.swift */,
+				8430445C25DD1DD900F0D3D8 /* LocationHandler.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				841AF2EB25DAB90700C68767 /* LocationInputView.swift in Sources */,
 				841AF2EA25DAB90700C68767 /* LocationInputActivationView.swift in Sources */,
 				841B5D0125605844002304AD /* SceneDelegate.swift in Sources */,
+				8430445D25DD1DD900F0D3D8 /* LocationHandler.swift in Sources */,
 				841B5D5425606F6F002304AD /* Extensions.swift in Sources */,
 				842522E625DD11840005334E /* User.swift in Sources */,
 				842522AD25DBACEF0005334E /* Service.swift in Sources */,
