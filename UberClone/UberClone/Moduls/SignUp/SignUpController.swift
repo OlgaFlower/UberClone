@@ -106,7 +106,6 @@ class SignUpController: UIViewController {
         super.viewDidLoad()
         configureUI()
         
-        print("---- location = \(location)")
     }
     
     //MARK: - Functions
@@ -146,7 +145,7 @@ class SignUpController: UIViewController {
     
     func uploadUserAndShowHomeController(uid: String, values: [String : Any]) {
         
-        REF_USERS.child("users").child(uid).updateChildValues(values, withCompletionBlock: { (error, reference) in
+        REF_USERS.child(uid).updateChildValues(values, withCompletionBlock: { (error, reference) in
             
             let window = UIApplication.shared.windows.first
             guard let controller = window?.rootViewController as? HomeController else { return }
