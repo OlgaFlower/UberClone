@@ -10,6 +10,7 @@ import Firebase
 import MapKit
 
 private let reuseIdentifier = "LocationCell"
+private let annotationIdentifier = "DriverAnnotation"
 
 class HomeController: UIViewController {
     
@@ -58,8 +59,28 @@ class HomeController: UIViewController {
     func fetchDrivers() {
         guard let location = locationManager?.location else { return }
         
-        Service.shared.fetchDrivers(location: location) { user in
-            print("---- Driver is \(user.fullname)")
+        Service.shared.fetchDrivers(location: location) { driver in
+            guard let coordinate = driver.location?.coordinate else { return }
+            let annotation = DriverAnnotation(uid: driver.uid, coordinate: coordinate)
+            
+            var driverIsVisible: Bool {
+                
+                return self.mapView.annotations.contains (where: { annotation -> Bool in
+                    guard let driverAnnotation = annotation as? DriverAnnotation else { return false }
+                    if driver.uid == driver.uid {
+                        //update position here
+
+                        driverAnnotation.updateAnnotationPosition(withCoordinate: coordinate)
+                        return true
+                    }
+                    return false
+                })
+                
+            }
+            
+            if !driverIsVisible {
+                self.mapView.addAnnotation(annotation)
+            }
         }
     }
     
@@ -116,6 +137,7 @@ class HomeController: UIViewController {
         
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
+        mapView.delegate = self
     }
     
     func configureLocationInputView() {
@@ -222,5 +244,18 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! LocationCell
         
         return cell
+    }
+}
+
+// MARK: - MKMapViewDelegate
+extension HomeController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? DriverAnnotation {
+            let view = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            view.image = #imageLiteral(resourceName: "chevron-sign-to-right")
+            return view
+        }
+        return nil
     }
 }
