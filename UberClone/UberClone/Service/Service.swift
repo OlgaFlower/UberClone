@@ -13,6 +13,17 @@ let DB_REF = Database.database().reference()
 let REF_USERS = DB_REF.child("users")
 let REF_DRIVER_LOCATIONS = DB_REF.child("driver-locations")
 
+
+//struct DriverService {
+//    static let shared = DriverService()
+//
+//    func updareDriverLocation(location: CLLocation) {
+//        guard let uid = Auth.auth().currentUser?.uid else { return }
+//        let geofire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
+//        geofire.setLocation(location, forKey: uid)
+//    }
+//}
+
 struct Service {
     
     static let shared = Service()

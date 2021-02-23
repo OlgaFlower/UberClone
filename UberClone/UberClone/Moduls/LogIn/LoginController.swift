@@ -150,7 +150,7 @@ class LoginController: UIViewController {
             
             let window = UIApplication.shared.windows.first
             guard let controller = window?.rootViewController as? HomeController else { return }
-            controller.configureUI()
+            controller.configure()
             self.dismiss(animated: true, completion: nil)
         }
     }

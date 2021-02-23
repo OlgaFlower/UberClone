@@ -42,8 +42,8 @@ class HomeController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchUserData()
-        fetchDrivers()
+//        fetchUserData()
+//        fetchDrivers()
     }
     
     // MARK: - API
@@ -57,27 +57,26 @@ class HomeController: UIViewController {
     }
     
     func fetchDrivers() {
+        
         guard let location = locationManager?.location else { return }
         
         Service.shared.fetchDrivers(location: location) { driver in
+            
             guard let coordinate = driver.location?.coordinate else { return }
             let annotation = DriverAnnotation(uid: driver.uid, coordinate: coordinate)
             
+            
             var driverIsVisible: Bool {
-                
-                return self.mapView.annotations.contains (where: { annotation -> Bool in
+                return self.mapView.annotations.contains(where: { annotation -> Bool in
+                    
                     guard let driverAnnotation = annotation as? DriverAnnotation else { return false }
-                    if driver.uid == driver.uid {
-                        //update position here
-
+                    if driverAnnotation.uid == driver.uid {
                         driverAnnotation.updateAnnotationPosition(withCoordinate: coordinate)
                         return true
                     }
                     return false
                 })
-                
             }
-            
             if !driverIsVisible {
                 self.mapView.addAnnotation(annotation)
             }
@@ -93,7 +92,7 @@ class HomeController: UIViewController {
                 self.present(nav, animated: true, completion: nil)
             }
         } else {
-            configureUI()
+            configure()
         }
     }
     
@@ -112,6 +111,11 @@ class HomeController: UIViewController {
     }
     
     // MARK: - Helper Functions
+    func configure() {
+        configureUI()
+        fetchUserData()
+        fetchDrivers()
+    }
     
     //Add Map View
     func configureUI() {
@@ -221,7 +225,6 @@ extension HomeController: LocationInputViewDelegate {
                 self.inputActivationView.alpha = 1
             }
         }
-
     }
 }
 
