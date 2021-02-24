@@ -174,6 +174,18 @@ class HomeController: UIViewController {
         
         view.addSubview(tableView)
     }
+    
+    func dismissLocationView(completion: ((Bool) -> Void)? = nil) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.locationInputView.alpha = 0
+            self.tableView.frame.origin.y = self.view.frame.height
+            self.locationInputView.removeFromSuperview()
+            
+            UIView.animate(withDuration: 0.5) {
+                self.inputActivationView.alpha = 1
+            }
+        }, completion: completion)
+    }
 }
 
 // MARK: - Map Helper Functions
@@ -245,16 +257,7 @@ extension HomeController: LocationInputViewDelegate {
     }
     
     func dismissLocationInputView() {
-        
-        UIView.animate(withDuration: 0.3) {
-            self.locationInputView.alpha = 0
-            self.tableView.frame.origin.y = self.view.frame.height
-        } completion: { _ in
-            self.locationInputView.removeFromSuperview()
-            UIView.animate(withDuration: 0.3) {
-                self.inputActivationView.alpha = 1
-            }
-        }
+        dismissLocationView()
     }
 }
 
@@ -281,6 +284,18 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedPlacemark = searchResults[indexPath.row]
+        
+        dismissLocationView { _ in
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = selectedPlacemark.coordinate
+            self.mapView.addAnnotation(annotation)
+            self.mapView.selectAnnotation(annotation, animated: true)
+        }
     }
 }
 
