@@ -10,6 +10,7 @@ import MapKit
 
 //MARK: - UIColor
 extension UIColor {
+    
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         return UIColor.init(red: red/255, green: green/255, blue: blue/255, alpha: 1.0)
     }
@@ -132,6 +133,7 @@ extension UIView {
     }
 }
 
+// MARK: - UITextField
 extension UITextField {
     
     func textField(withPlaceholder placeholder: String, isSecureTextEntry: Bool) -> UITextField {
@@ -146,7 +148,9 @@ extension UITextField {
     }
 }
 
+// MARK: - MKPlacemark
 extension MKPlacemark {
+    
     var address: String? {
         get {
             guard let subThoroughfare = subThoroughfare else { return nil }
@@ -156,5 +160,21 @@ extension MKPlacemark {
             
             return "\(subThoroughfare) \(thoroughfare), \(locality), \(adminArea)"
         }
+    }
+}
+
+// MARK: - MKMapView
+extension MKMapView {
+    //Fit zoom (make all path visible)
+    func zoomToFit(annotations: [MKAnnotation]) {
+        var zoomRect = MKMapRect.null
+        annotations.forEach { annotation in
+            let annotationPoint = MKMapPoint(annotation.coordinate)
+            let pointRect = MKMapRect(x: annotationPoint.x, y: annotationPoint.y, width: 0.01, height: 0.01)
+            zoomRect = zoomRect.union(pointRect)
+        }
+        //Place path in these insets
+        let insets = UIEdgeInsets(top: 100, left: 100, bottom: 230, right: 100)
+        setVisibleMapRect(zoomRect, edgePadding: insets, animated: true)
     }
 }
