@@ -39,6 +39,7 @@ class HomeController: UIViewController {
     private var user: User? {
         didSet {
             locationInputView.user = user
+            print("---- user = \(user?.accountType)")
             
             if user?.accountType == .passenger {
                 fetchDrivers()
@@ -51,7 +52,15 @@ class HomeController: UIViewController {
     
     private var trip: Trip? {
         didSet {
-            print("---- pickup passenger controller")
+            guard let user = user else { return }
+            
+            if user.accountType == .driver {
+                guard let trip = trip else { return }
+                let controller = PickupController(trip: trip)
+                controller.modalPresentationStyle = .fullScreen
+                self.present(controller, animated: true, completion: nil)
+            }
+            
         }
     }
     
@@ -68,6 +77,7 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         checkIfUserIsLoggedIn()
         enableLocationServices()
+//        signOut()
     }
     
     // MARK: - Selector
@@ -127,6 +137,7 @@ class HomeController: UIViewController {
     
     func observeTrips() {
         Service.shared.observeTrips { trip in
+            print("---- Service.shared.observeTrips = \(trip.pickupCoordinates)")
             self.trip = trip
         }
     }
