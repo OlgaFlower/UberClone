@@ -54,6 +54,7 @@ class PickupController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureMapView()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -73,6 +74,17 @@ class PickupController: UIViewController {
     // MARK: - API
     
     // MARK: - Helper Functions
+    
+    func configureMapView() {
+        //display rider location in a center of the circle
+        let region = MKCoordinateRegion(center: trip.pickupCoordinates, latitudinalMeters: 1500, longitudinalMeters: 1500)
+        mapView.setRegion(region, animated: false)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = trip.pickupCoordinates
+        mapView.addAnnotation(annotation)
+        mapView.selectAnnotation(annotation, animated: true) //display bigger size of the annotation 
+        
+    }
     
     func configureUI() {
         
