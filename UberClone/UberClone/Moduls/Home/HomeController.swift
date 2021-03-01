@@ -57,6 +57,7 @@ class HomeController: UIViewController {
             if user.accountType == .driver {
                 guard let trip = trip else { return }
                 let controller = PickupController(trip: trip)
+                controller.delegate = self
                 controller.modalPresentationStyle = .fullScreen
                 self.present(controller, animated: true, completion: nil)
             }
@@ -78,6 +79,11 @@ class HomeController: UIViewController {
         checkIfUserIsLoggedIn()
         enableLocationServices()
 //        signOut()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let trip = trip else { return }
+        print("---- Trip state is \(trip.state)")
     }
     
     // MARK: - Selector
@@ -476,5 +482,14 @@ extension HomeController: RideActionViewDelegate {
             
             print("---- upload trip successfully")
         }
+    }
+}
+
+// MARK: - PickupControllerDelegate
+extension HomeController: PickupControllerDelegate {
+    
+    func didAcceptTrip(_ trip: Trip) {
+        self.trip?.state = .accepted
+        self.dismiss(animated: true, completion: nil)
     }
 }
