@@ -471,8 +471,11 @@ extension HomeController: MKMapViewDelegate {
 extension HomeController: RideActionViewDelegate {
     
     func uploadTrip(_ view: RideActionView) {
+        
         guard let pickupCoord = locationManager?.location?.coordinate else { return }
         guard let destinationCoord = view.destination?.coordinate else { return }
+        
+        shouldPresentLoadngView(true, message: "Finding you a ride..")
         
         Service.shared.uploadTrip(pickupCoord, destinationCoord) { (error, reference) in
             if let error = error {
@@ -480,7 +483,9 @@ extension HomeController: RideActionViewDelegate {
                 return
             }
             
-            print("---- upload trip successfully")
+            UIView.animate(withDuration: 0.3, animations: {
+                self.rideActionView.frame.origin.y = self.view.frame.height
+            })
         }
     }
 }
