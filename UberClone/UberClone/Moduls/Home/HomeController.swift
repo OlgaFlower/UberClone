@@ -369,6 +369,14 @@ private extension HomeController {
             mapView.removeOverlay(mapView.overlays[0])
         }
     }
+    
+    func centerMapOnUserLocation() {
+        guard let coordinate = locationManager?.location?.coordinate else { return }
+        let region = MKCoordinateRegion(center: coordinate,
+                                        latitudinalMeters: 2000,
+                                        longitudinalMeters: 2000)
+        mapView.setRegion(region, animated: true)
+    }
 }
 
 // MARK: - Location Services
@@ -501,6 +509,7 @@ extension HomeController: MKMapViewDelegate {
 // MARK: - RideActionViewDelegate
 extension HomeController: RideActionViewDelegate {
     
+    // MARK: Upload trip
     func uploadTrip(_ view: RideActionView) {
         
         guard let pickupCoord = locationManager?.location?.coordinate else { return }
@@ -517,6 +526,22 @@ extension HomeController: RideActionViewDelegate {
             UIView.animate(withDuration: 0.3, animations: {
                 self.rideActionView.frame.origin.y = self.view.frame.height
             })
+        }
+    }
+    
+    // MARK: Cancel trip
+    func cancelTrip() {
+        Service.shared.cancelTrip { (error, ref) in
+            if let error = error {
+                print("---- error deleting trip \(error.localizedDescription)")
+                return
+            }
+            self.centerMapOnUserLocation()
+            self.animateRideActionView(shouldShow: false)
+            self.removeAnnotationsAndOverlays()
+            
+            self.actionButton.setImage(#imageLiteral(resourceName: "baseline_menu_black_36dp").withRenderingMode(.alwaysOriginal), for: .normal)
+            self.actionButtonConfig = .showMenu
         }
     }
 }
@@ -537,6 +562,14 @@ extension HomeController: PickupControllerDelegate {
         generatePolyline(toDestination: mapItem)
         
         mapView.zoomToFit(annotations: mapView.annotations)
+        
+        Service.shared.observeTripCancelled(trip: trip) {
+            self.removeAnnotationsAndOverlays()
+            self.animateRideActionView(shouldShow: false)
+            self.centerMapOnUserLocation()
+            self.presentAlertController(withTitle: "Oops!",
+                                        message: "The passenger has decided to cancel this ride. Press Ok to continue.")
+        }
         
         self.dismiss(animated: true) {
             Service.shared.fetchUserData(uid: trip.passengerUid, completion: { passenger in

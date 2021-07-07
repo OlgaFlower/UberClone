@@ -18,6 +18,7 @@ struct Service {
     
     static let shared = Service()
     
+    // Fetch User Data
     func fetchUserData(uid: String, completion: @escaping(User) -> Void) {
         
         REF_USERS.child(uid).observeSingleEvent(of: .value) { snapshot in
@@ -29,6 +30,7 @@ struct Service {
         }
     }
     
+    // Fetch Drivers
     func fetchDrivers(location: CLLocation, completion: @escaping(User) -> Void) {
         let geofire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
         
@@ -44,6 +46,7 @@ struct Service {
         }
     }
     
+    // Upload Trip
     func uploadTrip(_ pickupCoordinates: CLLocationCoordinate2D, _ destinationCoordinates: CLLocationCoordinate2D, completion: @escaping(Error?, DatabaseReference) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
@@ -57,6 +60,7 @@ struct Service {
         REF_TRIPS.child(uid).updateChildValues(values, withCompletionBlock: completion)
     }
     
+    // Observe Trips
     func observeTrips(completion: @escaping(Trip) -> Void) {
         REF_TRIPS.observe(.childAdded) { snapshot in
             print("---- snapshot.key = \(snapshot.key)")
@@ -67,6 +71,14 @@ struct Service {
         }
     }
     
+    // Observe Trip Cancelled
+    func observeTripCancelled(trip: Trip, completion: @escaping() -> Void) {
+        REF_TRIPS.child(trip.passengerUid).observeSingleEvent(of: .childRemoved) { _ in
+            completion()
+        }
+    }
+    
+    // Accept Trip
     func acceptTrip(trip: Trip, completion: @escaping(Error?, DatabaseReference) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let values = ["driverUid" : uid,
@@ -75,6 +87,7 @@ struct Service {
         REF_TRIPS.child(trip.passengerUid).updateChildValues(values, withCompletionBlock: completion)
     }
     
+    // Observe Current Trip
     func observeCurrentTrip(completion: @escaping(Trip) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
@@ -84,5 +97,12 @@ struct Service {
             let trip = Trip(passengerUid: uid, dictionary: dictionary)
             completion(trip)
         }
+    }
+    
+    // Cancel Trip
+    func cancelTrip(completion: @escaping(Error?, DatabaseReference) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        REF_TRIPS.child(uid).removeValue(completionBlock: completion)
     }
 }
