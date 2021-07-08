@@ -113,15 +113,33 @@ class HomeController: UIViewController {
         Service.shared.observeCurrentTrip { trip in
             
             self.trip = trip
-            if trip.state == .accepted {
+            
+            guard let state = trip.state else { return }
+            guard let driverUid = trip.driverUid else { return }
+            
+            switch state {
+            
+            case .requested:
+                break
+                
+            case .accepted:
                 self.shouldPresentLoadngView(false)
-                guard let driverUid = trip.driverUid else { return }
+                
                 
                 Service.shared.fetchUserData(uid: driverUid, completion: { driver in
                     self.animateRideActionView(shouldShow: true, config: .tripAccepted,
                                                user: driver)
-
+                    
                 })
+                
+            case .driverArrived:
+                self.rideActionView.config = .driverArrived
+                
+            case .inProgress:
+                break
+                
+            case .completed:
+                break
             }
         }
     }
@@ -316,7 +334,7 @@ class HomeController: UIViewController {
                 rideActionView.user = user
             }
             
-            rideActionView.configureUI(withConfig: config)
+            rideActionView.config = config
         }
     }
 }
@@ -377,13 +395,34 @@ private extension HomeController {
                                         longitudinalMeters: 2000)
         mapView.setRegion(region, animated: true)
     }
+    
+    // set custom user region (radius)
+    func setCustomRegion(withCoordinates coordinates: CLLocationCoordinate2D) {
+        let region = CLCircularRegion(center: coordinates, radius: 25, identifier: "pickup")
+        locationManager?.startMonitoring(for: region)
+    }
 }
 
-// MARK: - Location Services
-extension HomeController {
+// MARK: - CLLocationManagerDelegate
+
+extension HomeController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        print("---- did start monitoring for region \(region)")
+    }
+    
+    // driver entered the passenger region/radius
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        
+        self.rideActionView.config = .pickupPassenger
+        guard let trip = self.trip else { return }
+        
+        Service.shared.updateTripState(trip: trip, state: .driverArrived)
+    }
    
     //Enable Location Services
     func enableLocationServices() {
+        locationManager?.delegate = self
         
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
@@ -550,6 +589,8 @@ extension HomeController: RideActionViewDelegate {
             
             self.actionButton.setImage(#imageLiteral(resourceName: "baseline_menu_black_36dp").withRenderingMode(.alwaysOriginal), for: .normal)
             self.actionButtonConfig = .showMenu
+            
+            self.inputActivationView.alpha = 1
         }
     }
 }
@@ -559,10 +600,14 @@ extension HomeController: PickupControllerDelegate {
     
     func didAcceptTrip(_ trip: Trip) {
         
+        self.trip = trip
         let annotation = MKPointAnnotation()
+        
         annotation.coordinate = trip.pickupCoordinates
         mapView.addAnnotation(annotation)
         mapView.selectAnnotation(annotation, animated: true)
+        
+        setCustomRegion(withCoordinates: trip.pickupCoordinates)
         
         // Generate polyline
         let placemark = MKPlacemark(coordinate: trip.pickupCoordinates)

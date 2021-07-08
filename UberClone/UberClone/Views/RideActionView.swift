@@ -17,6 +17,7 @@ protocol RideActionViewDelegate: class {
 enum RideActionViewConfiguration {
     case requestRide
     case tripAccepted
+    case driverArrived
     case pickupPassenger
     case tripInProgress
     case endTrip
@@ -54,9 +55,15 @@ class RideActionView: UIView {
     // MARK: - Properties
     
     weak var delegate: RideActionViewDelegate?
-    var config = RideActionViewConfiguration()
+    
     var buttonAction = ButtonAction()
     var user: User?
+    
+    var config = RideActionViewConfiguration() {
+        didSet {
+            configureUI(withConfig: config)
+        }
+    }
     
     var destination: MKPlacemark? {
         didSet {
@@ -174,7 +181,7 @@ class RideActionView: UIView {
     }
     
     // MARK: - Helper Functions
-    func configureUI(withConfig config: RideActionViewConfiguration) {
+    private func configureUI(withConfig config: RideActionViewConfiguration) {
         
         switch config {
         
@@ -199,6 +206,14 @@ class RideActionView: UIView {
             
             infoViewLabel.text = String(user.fullname.first ?? "X")
             uberInfoLabel.text = user.fullname
+            
+        case .driverArrived:
+            guard let user = user else { return }
+            
+            if user.accountType == .driver {
+                titleLabel.text = "Driver has arrived"
+                addressLabel.text = "Please meet driver at pickup location"
+            }
             
         case .pickupPassenger:
             titleLabel.text = "Arrived At Passenger Location"
