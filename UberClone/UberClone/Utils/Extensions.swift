@@ -174,7 +174,7 @@ extension MKMapView {
             zoomRect = zoomRect.union(pointRect)
         }
         //Place path in these insets
-        let insets = UIEdgeInsets(top: 100, left: 100, bottom: 230, right: 100)
+        let insets = UIEdgeInsets(top: 100, left: 100, bottom: 300, right: 100)
         setVisibleMapRect(zoomRect, edgePadding: insets, animated: true)
     }
 }
