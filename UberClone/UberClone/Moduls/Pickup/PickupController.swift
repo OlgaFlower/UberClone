@@ -86,11 +86,8 @@ class PickupController: UIViewController {
         //display rider location in a center of the circle
         let region = MKCoordinateRegion(center: trip.pickupCoordinates, latitudinalMeters: 1500, longitudinalMeters: 1500)
         mapView.setRegion(region, animated: false)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = trip.pickupCoordinates
-        mapView.addAnnotation(annotation)
-        mapView.selectAnnotation(annotation, animated: true) //display bigger size of the annotation 
         
+        mapView.addAnnotationAndSelect(forCoordinate: trip.pickupCoordinates)
     }
     
     func configureUI() {

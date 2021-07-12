@@ -11,6 +11,7 @@ import MapKit
 protocol RideActionViewDelegate: class {
     func uploadTrip(_ view: RideActionView)
     func cancelTrip()
+    func pickupPassenger()
 }
 
 // driver's actions
@@ -174,7 +175,7 @@ class RideActionView: UIView {
         case .getDirections:
             print("---- handle Get Direction")
         case .pickup:
-            print("---- handle Pickup")
+            delegate?.pickupPassenger()
         case .dropOff:
             print("---- handle Drop Off")
         }
