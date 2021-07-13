@@ -12,6 +12,7 @@ protocol RideActionViewDelegate: class {
     func uploadTrip(_ view: RideActionView)
     func cancelTrip()
     func pickupPassenger()
+    func dropOffPassenger()
 }
 
 // driver's actions
@@ -177,7 +178,7 @@ class RideActionView: UIView {
         case .pickup:
             delegate?.pickupPassenger()
         case .dropOff:
-            print("---- handle Drop Off")
+            delegate?.dropOffPassenger()
         }
     }
     
