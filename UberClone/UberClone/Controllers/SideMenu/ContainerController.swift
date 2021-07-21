@@ -20,6 +20,7 @@ class ContainerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .backgroundColor
         configureHomeController()
         configureMenuController()
     }
@@ -32,7 +33,6 @@ class ContainerController: UIViewController {
         addChild(homeController)
         homeController.didMove(toParent: self)
         view.addSubview(homeController.view)
-        
         homeController.delegate = self
     }
     
@@ -43,7 +43,6 @@ class ContainerController: UIViewController {
     }
     
     func animateMenu(shouldExpand: Bool) {
-        
         if shouldExpand {
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.homeController.view.frame.origin.x = self.view.frame.width - 80

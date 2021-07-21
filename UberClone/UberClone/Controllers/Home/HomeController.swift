@@ -90,6 +90,9 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .backgroundColor
+        
         checkIfUserIsLoggedIn()
         enableLocationServices()
 //        signOut()

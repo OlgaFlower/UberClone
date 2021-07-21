@@ -35,6 +35,7 @@
 		8472765925866EBD001A2638 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8472765825866EBD001A2638 /* Main.storyboard */; };
 		847FBCA526A8183D00BA143C /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847FBCA426A8183D00BA143C /* MenuController.swift */; };
 		847FBCA726A8187000BA143C /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847FBCA626A8187000BA143C /* ContainerController.swift */; };
+		84DEF78226A831E0000CA657 /* MenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEF78126A831E0000CA657 /* MenuHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		8472765825866EBD001A2638 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		847FBCA426A8183D00BA143C /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		847FBCA626A8187000BA143C /* ContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
+		84DEF78126A831E0000CA657 /* MenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeader.swift; sourceTree = "<group>"; };
 		B0C321726653DD759C8B2B28 /* Pods-UberClone-UberCloneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberClone-UberCloneUITests.debug.xcconfig"; path = "Target Support Files/Pods-UberClone-UberCloneUITests/Pods-UberClone-UberCloneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD5488022530F888F82224A3 /* Pods_UberClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UberClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC801FA5C5647E98F65D55FE /* Pods_UberCloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UberCloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +226,7 @@
 				841AF2E825DAB90700C68767 /* LocationInputView.swift */,
 				841AF2E025DAB8F300C68767 /* AuthButton.swift */,
 				84437B1925E69AF20089A251 /* RideActionView.swift */,
+				84DEF78126A831E0000CA657 /* MenuHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				841B5D0125605844002304AD /* SceneDelegate.swift in Sources */,
 				847FBCA526A8183D00BA143C /* MenuController.swift in Sources */,
 				8430445D25DD1DD900F0D3D8 /* LocationHandler.swift in Sources */,
+				84DEF78226A831E0000CA657 /* MenuHeader.swift in Sources */,
 				847FBCA726A8187000BA143C /* ContainerController.swift in Sources */,
 				841B5D5425606F6F002304AD /* Extensions.swift in Sources */,
 				84437B1A25E69AF20089A251 /* RideActionView.swift in Sources */,
